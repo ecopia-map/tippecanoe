@@ -1287,7 +1287,9 @@ int read_input(std::vector<source> &sources, char *fname, int maxzoom, int minzo
 			// Trim out characters that can't be part of selector
 			std::string out;
 			for (size_t p = 0; p < trunc.size(); p++) {
-				if (isalpha(trunc[p]) || isdigit(trunc[p]) || trunc[p] == '_' || (trunc[p] & 0x80) != 0) {
+				if (isalpha(trunc[p]) || isdigit(trunc[p]) || trunc[p] == '_' || (trunc[p] & 0x80) != 0 ||
+					trunc[p] == '-' || trunc[p] == ' ' || trunc[p] == '.' || trunc[p] == ':' || trunc[p] == ';' ||
+					trunc[p] == '"' || trunc[p] == '\'') {
 					out.append(trunc, p, 1);
 				}
 			}
